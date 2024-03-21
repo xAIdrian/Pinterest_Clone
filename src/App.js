@@ -1,4 +1,5 @@
 import './styles/normalize.css';
+import 'reactjs-popup/dist/index.css';
 
 import FinalBoard from './components/FinalBoard.js';
 

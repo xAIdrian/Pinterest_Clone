@@ -9,12 +9,15 @@ import LoadingIcon from './LoadingIcon';
 import ReactJoyride from 'react-joyride';
 import { deletePinBackend, fetchPinsBackend } from '../firebase_setup/DatabaseOperations.js';
 import { Tooltip } from 'antd';
+import Popup from 'reactjs-popup';
 
 import '../styles/final_board_styles.css';
 
 import autoAnimate from '@formkit/auto-animate';
+import { useState } from 'react';
 
 class FinalBoard extends React.Component {
+
   constructor(props) {
     super(props);
     this.animate = React.createRef();
@@ -26,6 +29,7 @@ class FinalBoard extends React.Component {
       show_open_pin: false,
       show_guidelines: false,
       show_loading: false,
+      show_dialog: false,
     };
   }
 
@@ -80,6 +84,53 @@ class FinalBoard extends React.Component {
   render() {
     return (
       <div style={{ overflow: 'hidden' }} ref={this.windowRef}>
+        <Popup
+          trigger={<button className="button"> Get My Content! </button>}
+          modal
+          nested
+        >
+          {close => (
+            <div className="modal">
+              <button className="close" onClick={close}>
+                &times;
+              </button>
+              <div className="header"> Modal Title </div>
+              <div className="content">
+                {' '}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
+                Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
+                delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
+                commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
+                explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
+              </div>
+              <div className="actions">
+                <Popup
+                  trigger={<button className="button"> Trigger </button>}
+                  position="top center"
+                  nested
+                >
+                  <span>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
+                    magni omnis delectus nemo, maxime molestiae dolorem numquam
+                    mollitia, voluptate ea, accusamus excepturi deleniti ratione
+                    sapiente! Laudantium, aperiam doloribus. Odit, aut.
+                  </span>
+                </Popup>
+                <button
+                  className="button"
+                  onClick={() => {
+                    console.log('modal closed ');
+                    close();
+                  }}
+                >
+                  close modal
+                </button>
+              </div>
+            </div>
+          )}
+        </Popup>
         <div class='header_container' id='header_bar'>
           <Header pinsToFilter={this.state.pinsFromDb} filterPins={this.filterPins} />
         </div>
