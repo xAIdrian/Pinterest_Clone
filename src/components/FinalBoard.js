@@ -10,6 +10,7 @@ import ReactJoyride from 'react-joyride';
 import { deletePinBackend, fetchPinsBackend } from '../firebase_setup/DatabaseOperations.js';
 import { Tooltip } from 'antd';
 import Popup from 'reactjs-popup';
+import styled from 'styled-components';
 
 import '../styles/final_board_styles.css';
 
@@ -17,6 +18,7 @@ import autoAnimate from '@formkit/auto-animate';
 import { useState } from 'react';
 
 class FinalBoard extends React.Component {
+
 
   constructor(props) {
     super(props);
@@ -30,6 +32,30 @@ class FinalBoard extends React.Component {
       show_guidelines: false,
       show_loading: false,
       show_dialog: false,
+    };
+
+    this.containerStyle = {
+      fontFamily: 'Arial, sans-serif',
+    };
+  
+    this.boxStyle = {
+      backgroundColor: '#fff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+      marginBottom: '16px',
+      padding: '20px',
+    };
+  
+    this.titleStyle = {
+      color: '#333',
+      fontSize: '24px',
+      margin: '0 0 10px 0',
+    };
+  
+    this.descriptionStyle = {
+      color: '#666',
+      fontSize: '16px',
+      margin: '0',
     };
   }
 
@@ -94,39 +120,31 @@ class FinalBoard extends React.Component {
               <button className="close" onClick={close}>
                 &times;
               </button>
-              <div className="header"> Modal Title </div>
+              <h1> From Your Creators Today </h1>
+              <strong>Click the content you like and we'll create content for you</strong>
               <div className="content">
-                {' '}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-                Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-                delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-                <br />
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
-                commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
-                explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
-              </div>
-              <div className="actions">
-                <Popup
-                  trigger={<button className="button"> Trigger </button>}
-                  position="top center"
-                  nested
-                >
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-                    magni omnis delectus nemo, maxime molestiae dolorem numquam
-                    mollitia, voluptate ea, accusamus excepturi deleniti ratione
-                    sapiente! Laudantium, aperiam doloribus. Odit, aut.
-                  </span>
-                </Popup>
-                <button
-                  className="button"
-                  onClick={() => {
-                    console.log('modal closed ');
-                    close();
-                  }}
-                >
-                  close modal
-                </button>
+                <div style={this.containerStyle}>
+                  <div style={this.boxStyle} onClick={close}>
+                    <h2 style={this.titleStyle}>The Manipulation Expert: You're Being Manipulated! Use Jealousy To Manipulate People! Robert Greene</h2>
+                    <p style={this.descriptionStyle}>Robert Greene is a New York Times bestselling author, whose books include, ‘The 48 Laws of Power’, ’The Art of Seduction’, and ’The 33 Strategies of War’.</p>
+                    <h3>The Diary of a CEO</h3>
+                  </div>
+                  <div style={this.boxStyle} onClick={close}>
+                    <h2 style={this.titleStyle}>watch this if you feel lost in life</h2>
+                    <p style={this.descriptionStyle}>Why does life need to be meaningful?  It doesn't a lot of gold metal athletes are depressed right after they win the gold because like, "now what?"</p>
+                    <h3>Alex Hormozi</h3>
+                  </div>
+                  <div style={this.boxStyle} onClick={close}>
+                    <h2 style={this.titleStyle}>How to Differentiate Yourself With Marketing</h2>
+                    <p style={this.descriptionStyle}>Original content. I would start a podcast, a twitch steam.  You know, just showing you standing at work all day doing what you do best. Content, content, content, content, content.</p>
+                    <h3>Gary V</h3>
+                  </div>
+                  <div style={this.boxStyle} onClick={close}>
+                    <h2 style={this.titleStyle}>The Ultimate Social Media Marketing Strategy</h2>
+                    <p style={this.descriptionStyle}>Doing what you love doing is one thing but getting paid to market is something entirely new in the 21st century.  Here's how you can make millions with your mouth.</p>
+                    <h3>Gary V</h3>
+                  </div>
+                </div>
               </div>
             </div>
           )}
