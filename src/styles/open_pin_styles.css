@@ -250,3 +250,18 @@
     position: inherit;
   }
 }
+
+.pint_mock_icon_container:hover {
+  margin-top: 0.5rem;
+  transform: scale(1.1);
+  background-color: #767676;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.pint_mock_icon_container {
+  margin-top: 0.5rem;
+  background-color: lightgray;
+  width: 100%;
+  border-radius: 10px;
+}

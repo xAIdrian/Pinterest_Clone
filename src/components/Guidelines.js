@@ -6,8 +6,8 @@ import { Button } from 'antd';
 
 export const FinalBoardSteps = [
   {
-    title: 'Welcome :)',
-    content: 'Hi there 👋. Welcome to my website 😊. Let these small pop-ups guide you through the navigation 🗺️, so you can enjoy the full experience 📌. Lets get started!',
+    title: 'We\'ve created some content for you while you were gone.',
+    content: 'Hi there 👋. Based on what has been getting likes we have some posts for you to review 😊. Take a second and schedule a few of them 📌. Lets get started!',
     target: '#root',
     placement: 'center',
   },
@@ -65,8 +65,8 @@ export const ModalSteps = [
 ];
 export const OpenPinSteps = [
   {
-    title: 'Open Pin window',
-    content: 'From here you can read the details of saved pin 📌 and edit/delete it.',
+    title: 'To quckly post with Outbrand, navigate with TAB and BACKSPACE.  Press SPACEBAR to schedule',
+    content: 'Don\'t waste time with all the buttons and clicks.  Just use your keyboard to navigate and post quickly.',
     target: '#root',
     placement: 'center',
   },

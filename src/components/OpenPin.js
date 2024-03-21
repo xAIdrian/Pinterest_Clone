@@ -110,6 +110,11 @@ function OpenPin(props) {
             <div className='new_pin_input'>{props.pinDetails.description}</div>
             <TagsCreator tags={props.pinDetails.tags} editable={isEditable} />
             {/* <div className='new_pin_input'>{props.pinDetails.destination}</div> */}
+            <Tooltip title='Show guidelines'>
+              <div className='pint_mock_icon_container'>
+                <h3>Schedule with AI</h3>
+              </div>
+            </Tooltip>
           </div>
         </div>
       </div>

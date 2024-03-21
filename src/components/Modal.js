@@ -91,7 +91,8 @@ function Modal(props) {
   return (
     <div className='add_pin_modal'>
       <div className='add_pin_container'>
-        <div className='side' id='left_side'>
+        <img src='./images/calendar.png' /> 
+        {/* <div className='side' id='left_side'>
           <div className='section1'>
             <div className='pint_mock_icon_container'>
               <img src='./images/ellipse.png' alt='edit' className='pint_mock_icon' />
@@ -143,7 +144,7 @@ function Modal(props) {
           <div className='section3' id='tags_container'>
             <TagsCreator tags={tags} setTags={setTags} editable={true} />
           </div>
-        </div>
+        </div> */}
       </div>
       {isLoading ? <LoadingIcon /> : null}
       <ReactJoyride
@@ -152,7 +153,7 @@ function Modal(props) {
         disableScrolling={true}
         showProgress
         showSkipButton
-        steps={ModalSteps}
+        // steps={ModalSteps}
         styles={{
           options: {
             primaryColor: '#ff0400',

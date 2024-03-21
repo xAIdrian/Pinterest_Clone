@@ -15,14 +15,38 @@ import styled from 'styled-components';
 import '../styles/final_board_styles.css';
 
 import autoAnimate from '@formkit/auto-animate';
-import { useState } from 'react';
+import { useState, useEf } from 'react';
 
 class FinalBoard extends React.Component {
-
 
   constructor(props) {
     super(props);
     this.animate = React.createRef();
+
+    let isQPressed = false;
+    let isWPressed = false;
+    let isEnterPressed = false;
+
+    let currentFocus = 0;
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'q' && !isQPressed) {
+        this.state.show_open_pin = false;
+        const pinDetails = this.state.pinsToShow[currentFocus--].props.pinDetails;
+        this.openPin(pinDetails);
+        
+      } else if (e.key === 'w' && !isWPressed) {
+        this.state.show_open_pin = false;
+        const pinDetails = this.state.pinsToShow[currentFocus++].props.pinDetails;
+        this.openPin(pinDetails);
+        
+      } else if (e.key === 'Enter' && !isEnterPressed) {
+        this.setState({ show_dialog: true })
+        setTimeout(() => {
+          this.setState({ show_dialog: false });
+        }, 1500);
+      }
+    });
 
     this.state = {
       pinsFromDb: [],
@@ -85,6 +109,11 @@ class FinalBoard extends React.Component {
   };
 
   openPin = (pinDetails) => {
+    //get the index of the pin in the array
+    const pinIndex = this.state.pinsToShow.findIndex((pin) => {
+      return pin.props.pinDetails.id === pinDetails.id
+    });
+    this.currentFocus = pinIndex;
     this.pinDetails = pinDetails;
     this.setState({ show_open_pin: true });
   };
@@ -110,6 +139,11 @@ class FinalBoard extends React.Component {
   render() {
     return (
       <div style={{ overflow: 'hidden' }} ref={this.windowRef}>
+        <Popup open={this.state.show_dialog} closeOnDocumentClick onClose={() => this.setState({ show_dialog: false })}>
+          <div className="modal">
+            <h2>Scheduled for Tuesday, September 13 @ 12:20!</h2>
+          </div>
+        </Popup>
         <Popup
           trigger={<button className="button"> Get My Content! </button>}
           modal
@@ -153,12 +187,12 @@ class FinalBoard extends React.Component {
           <Header pinsToFilter={this.state.pinsFromDb} filterPins={this.filterPins} />
         </div>
         <div className='navigation_bar' id='navigation_bar'>
-          <Tooltip title='Add new Pin'>
+          <Tooltip title='Schedule your favorite posts.'>
             <div onClick={() => this.setState({ show_modal: true })} className='pint_mock_icon_container' id='add_pin'>
               <img src='./images/add.png' alt='add_pin' className='pint_mock_icon' />
             </div>
           </Tooltip>
-          <Tooltip title='Generate random Pin'>
+          <Tooltip title='Shuffle your current queue'>
             <div onClick={(event) => this.generateRandomPin(event)} className='pint_mock_icon_container add_pin'>
               <img src='./images/shuffle.png' alt='random' className='pint_mock_icon' />
             </div>
